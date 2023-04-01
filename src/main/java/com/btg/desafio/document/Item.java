@@ -1,4 +1,4 @@
-package com.btg.desafio.repository.domain;
+package com.btg.desafio.document;
 
 import java.math.BigDecimal;
 
