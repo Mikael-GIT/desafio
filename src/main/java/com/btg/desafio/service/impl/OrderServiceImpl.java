@@ -1,13 +1,12 @@
 package com.btg.desafio.service.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.btg.desafio.amqp.dto.OrderConsumerDto;
-import com.btg.desafio.controller.dto.TotalOrderValueResponseDto;
-import com.btg.desafio.controller.dto.TotalOrdersByClientResponseDto;
 import com.btg.desafio.document.Order;
 import com.btg.desafio.exception.EntityNotFoundException;
 import com.btg.desafio.repository.OrderRepository;
@@ -30,19 +29,24 @@ public class OrderServiceImpl implements OrderService{
 
 
     @Override
-    public TotalOrdersByClientResponseDto getOrdersByClientId(Integer clientId) throws Exception {
+    public List<Order> getOrdersByClientId(Integer clientId) throws Exception {
         List<Order> orders = orderRepository.findByClientId(clientId);
         if(!orders.isEmpty()) {
-            return orderMapper.toOrdersByClientResponseDto(orders);
+            return orders;
         }
         throw new EntityNotFoundException("Não foi possível encontrar pedidos para esse cliente.");
     }
     
     @Override
-    public TotalOrderValueResponseDto getTotalOrderValue(Integer orderId) throws Exception {
+    public BigDecimal getTotalValueOrderById(Integer orderId) throws Exception {
         Order order = orderRepository.findByOrderId(orderId).orElseThrow(() -> new EntityNotFoundException("Não foi possível consultar o pedido."));
-        TotalOrderValueResponseDto totalOrderValueResponseDto = orderMapper.toTotalValueResponseDto(order);
-        return totalOrderValueResponseDto;
+        return BigDecimal.valueOf(order.totalOrderValue()).setScale(2);
+    }
+
+
+    @Override
+    public Integer getNumberOfOrdersByClientId(Integer clientId) throws Exception {
+        return (int) getOrdersByClientId(clientId).stream().count();
     }
 
 
