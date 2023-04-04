@@ -20,26 +20,23 @@ Este é um repositório para um desafio de programação. O objetivo deste desaf
 - [ ] Testes de integração com o RabbitMQ
 - [X] Refactoring
 
-### Lista ordenada
-1. Listagem ordenada 
-
 # Tecnologias utilizadas
-Java
-Spring
-MongoDB
-Docker
-Maven
+- Java
+- Spring
+- MongoDB
+- Docker
+- Maven
 
 # Como executar o projeto
 Para executar o projeto, é necessário ter o Docker Desktop
 
-1° Step - Clone o projeto: https://github.com/Mikael-GIT/desafio.git
+### 1° Step - Clone o projeto: https://github.com/Mikael-GIT/desafio.git
 
-2° Step - Vá até o diretório docker por meio do comando: cd docker
+### 2° Step - Vá até o diretório docker por meio do comando: cd docker
 
-3° Step - Execute o comando docker-compose up
+### 3° Step - Execute o comando docker-compose up
 
-4° Step - Verifique se os containers estão up por meio do comando docker ps
+### 4° Step - Verifique se os containers estão up por meio do comando docker ps
 
 O processo vai levar alguns minutos e 3 containers serão iniciados:
 - Mongodb
@@ -47,11 +44,9 @@ O processo vai levar alguns minutos e 3 containers serão iniciados:
 - Container da aplicação
 
 # Endpoints disponíveis
-GET /orders/{id}: Consulta o valor total de um pedido pelo id dele
-
-
-GET /orders/clients/{id}: Consulta total de pedidos realizados por um cliente pelo seu id
-GET /orders/clients/{id}/orders: Consulta pedidos realizados por um cliente
+- GET /orders/{id}: Consulta o valor total de um pedido pelo id dele
+- GET /orders/clients/{id}: Consulta total de pedidos realizados por um cliente pelo seu id
+- GET /orders/clients/{id}/orders: Consulta pedidos realizados por um cliente
 
 # RabbitMQ
 Abra no navegador: http://localhost:15672/
