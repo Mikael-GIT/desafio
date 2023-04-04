@@ -8,5 +8,5 @@ FROM openjdk:11
 WORKDIR /app
 RUN ls
 COPY --from=build /usr/app/target/*.jar ./app.jar
-EXPOSE 8761
+EXPOSE 8080
 ENTRYPOINT java -jar app.jar

@@ -6,15 +6,16 @@ services:
       context: ../
       dockerfile: ./Dockerfile
     ports:
-      - "8080:8090"
+      - "8080:8080"
     depends_on:
       - mongodb
       - rabbitmq
+    restart: on-failure
 
   mongodb:
     image: mongo:latest
     container_name: mongodb
-    restart: always
+    restart: on-failure
     ports:
       - "27017:27017"
 #    environment:
@@ -24,9 +25,9 @@ services:
       - ./mongodb_data:/data/db
 
   rabbitmq:
-    image: rabbitmq:3.9.9-management-alpine
+    image: rabbitmq:3.9.8-management-alpine
     container_name: rabbitmq
-    restart: always
+    restart: on-failure
     ports:
       - "5672:5672"
       - "15672:15672"

@@ -2,7 +2,9 @@ package com.btg.desafio.service.impl;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,11 +25,11 @@ public class OrderServiceImpl implements OrderService{
     @Autowired
     private OrderMapper orderMapper;
 
+    @Override
     public void save(OrderConsumerDto orderConsumerDto){
         Order order = orderMapper.toOrder(orderConsumerDto);
         orderRepository.save(order);
     }
-
 
     @Override
     public List<Order> getOrdersByClientId(Integer clientId) throws Exception {
@@ -43,7 +45,6 @@ public class OrderServiceImpl implements OrderService{
         Order order = orderRepository.findByOrderId(orderId).orElseThrow(() -> new EntityNotFoundException("Não foi possível consultar o pedido."));
         return BigDecimal.valueOf(order.totalOrderValue()).setScale(2, RoundingMode.HALF_DOWN);
     }
-
 
     @Override
     public Integer getNumberOfOrdersByClientId(Integer clientId) throws Exception {
