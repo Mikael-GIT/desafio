@@ -1,5 +1,6 @@
 package com.btg.desafio.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.btg.desafio.document.Order;
+import com.btg.desafio.repository.entity.Order;
 import com.btg.desafio.service.OrderService;
 
 @RestController
@@ -24,13 +25,13 @@ public class OrderController {
     }
 
     @GetMapping("/clients/{clientId}")
-    public Integer getNumberOfOrdersByClientId(@PathVariable Integer orderId) throws Exception{
-        return orderService.getNumberOfOrdersByClientId(orderId);
+    public Integer getNumberOfOrdersByClientId(@PathVariable Integer clientId) throws Exception{
+        return orderService.getNumberOfOrdersByClientId(clientId);
     }
 
     @GetMapping("/{id}")
-    public Integer getTotalValueOrderById(@PathVariable Integer id) throws Exception{
-        return orderService.getNumberOfOrdersByClientId(id);
+    public BigDecimal getTotalValueOrderById(@PathVariable Integer id) throws Exception{
+        return orderService.getTotalValueOrderById(id);
     }
 
 }

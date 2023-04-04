@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.btg.desafio.amqp.dto.OrderConsumerDto;
-import com.btg.desafio.document.Item;
-import com.btg.desafio.document.Order;
+import com.btg.desafio.repository.entity.Item;
+import com.btg.desafio.repository.entity.Order;
+import com.btg.desafio.service.dto.OrderConsumerDto;
 
 @Component
 public class OrderMapper {

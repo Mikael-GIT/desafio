@@ -3,8 +3,8 @@ package com.btg.desafio.service;
 import java.math.BigDecimal;
 import java.util.List;
 
-import com.btg.desafio.amqp.dto.OrderConsumerDto;
-import com.btg.desafio.document.Order;
+import com.btg.desafio.repository.entity.Order;
+import com.btg.desafio.service.dto.OrderConsumerDto;
 
 public interface OrderService {
     

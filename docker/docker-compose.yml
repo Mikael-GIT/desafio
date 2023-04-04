@@ -1,12 +1,12 @@
 version: "3.9"
 
 services:
-  myapp:
+  desafio:
     build:
-      context: .
-      build: ./bezkoder-app
+      context: ../
+      dockerfile: ./Dockerfile
     ports:
-      - "8080:8080"
+      - "8080:8090"
     depends_on:
       - mongodb
       - rabbitmq
@@ -17,11 +17,11 @@ services:
     restart: always
     ports:
       - "27017:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: admin
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: admin
+#      MONGO_INITDB_ROOT_PASSWORD: admin
     volumes:
-      - ./mongodb_data:/data/db 
+      - ./mongodb_data:/data/db
 
   rabbitmq:
     image: rabbitmq:3.9.9-management-alpine
@@ -33,3 +33,4 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
+      SPRING_RABBITMQ_HOST: my-rabbit

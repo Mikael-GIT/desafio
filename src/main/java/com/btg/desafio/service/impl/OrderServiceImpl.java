@@ -1,16 +1,17 @@
 package com.btg.desafio.service.impl;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.btg.desafio.amqp.dto.OrderConsumerDto;
-import com.btg.desafio.document.Order;
 import com.btg.desafio.exception.EntityNotFoundException;
 import com.btg.desafio.repository.OrderRepository;
+import com.btg.desafio.repository.entity.Order;
 import com.btg.desafio.service.OrderService;
+import com.btg.desafio.service.dto.OrderConsumerDto;
 import com.btg.desafio.service.mapper.OrderMapper;
 
 @Service
@@ -40,7 +41,7 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public BigDecimal getTotalValueOrderById(Integer orderId) throws Exception {
         Order order = orderRepository.findByOrderId(orderId).orElseThrow(() -> new EntityNotFoundException("Não foi possível consultar o pedido."));
-        return BigDecimal.valueOf(order.totalOrderValue()).setScale(2);
+        return BigDecimal.valueOf(order.totalOrderValue()).setScale(2, RoundingMode.HALF_DOWN);
     }
 
 

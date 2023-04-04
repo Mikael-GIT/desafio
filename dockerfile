@@ -1,10 +1,12 @@
 FROM maven:3.8.5-openjdk-11 as build
-WORKDIR /app
+WORKDIR /usr/app
 COPY . .
-RUN mvn clean package -DskipTests
+RUN ls /usr/app
+RUN mvn clean install
 
 FROM openjdk:11
 WORKDIR /app
-COPY --from=build /app/target/*.jar ./app.jar
+RUN ls
+COPY --from=build /usr/app/target/*.jar ./app.jar
 EXPOSE 8761
 ENTRYPOINT java -jar app.jar
