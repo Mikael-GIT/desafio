@@ -32,6 +32,8 @@ Para executar o projeto, é necessário ter o Docker Desktop
 
 ### 1° Step - Clone o projeto: https://github.com/Mikael-GIT/desafio.git
 
+### 2° Step - Na raiz do projeto, execute o comando mvn clean install
+
 ### 2° Step - Vá até o diretório docker por meio do comando: cd docker
 
 ### 3° Step - Execute o comando docker-compose up
@@ -48,6 +50,9 @@ O processo vai levar alguns minutos e 3 containers serão iniciados:
 - GET /orders/clients/{id}: Consulta total de pedidos realizados por um cliente pelo seu id
 
 - GET /orders/clients/{id}/orders: Consulta pedidos realizados por um cliente
+
+## Collection do insomnia
+https://drive.google.com/file/d/1ZT91FwXeYGOXC-xxVpnwJtaCVvQui1kC/view?usp=share_link
 
 # RabbitMQ
 Abra no navegador: http://localhost:15672/
