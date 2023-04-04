@@ -46,6 +46,7 @@ O processo vai levar alguns minutos e 3 containers serão iniciados:
 # Endpoints disponíveis
 - GET /orders/{id}: Consulta o valor total de um pedido pelo id dele
 - GET /orders/clients/{id}: Consulta total de pedidos realizados por um cliente pelo seu id
+
 - GET /orders/clients/{id}/orders: Consulta pedidos realizados por um cliente
 
 # RabbitMQ
